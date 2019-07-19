@@ -1,0 +1,41 @@
+This app provides an endpoints for adding/removing/updating/view of the users, products and orders.
+
+The schema is provided in the schema.sql and also the dummy data in export.sql. When running the app for the first time,
+please update the database properties of local postgres server in app.py
+
+When the app runs, if there is any error while running the orders table, schema will be run and tables are created from scratch
+The reason is as orders table is closely tied with the other two tables, we can create the tables based on how orders table responds
+
+Also the schemas can be prior created from export.sql before running the schema.sql, I am just attaching both the files
+but technically any one can perform the job
+
+The below routes are available
+            1. users - GET/POST/PUT/DELETE /api/v1/users
+            2. products - GET/POST/PUT/DELETE /api/v1/products
+            3. orders - GET/POST/DELETE /api/v1/products
+
+sample requests:
+
+
+---------------
+GET
+---------------
+http://localhost:8888/api/v1/users
+http://localhost:8888/api/v1/users?id=91ef27f4-ca26-4296-8c5d-36f874c004a544
+
+---------------
+POST
+---------------
+http://localhost:8888/api/v1/products
+{
+  "name":"mykitchen",
+  "price":100,
+  "type":"51977806-8d5d-48f5-9376-4bbf2a017846"
+}
+
+
+http://localhost:8888/api/v1/orders
+{
+  "product_id":"bf895eee-6c63-44d2-8dd4-c8e7ac6f6c6a",
+  "user_id":"91ef27f4-ca26-4296-8c5d-36f874c004a5"
+}
